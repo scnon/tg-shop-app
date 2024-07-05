@@ -1,41 +1,34 @@
 <template>
     <div class="category">
-        <van-config-provider :theme-vars="theme">
-            <van-sidebar v-model="active" scrollspy>
-                <van-sidebar-item @click="onItemClick(item)" v-for="item in categoryList" :title="item.name">
-                </van-sidebar-item>
-            </van-sidebar>
-        </van-config-provider>
+        <t-side-bar :value="activeIndex" @change="onSideBarChange" @click="onSidebarClick">
+            <t-side-bar-item v-for="(item, index) in data" :key="index" :value="index" :label="item.label">
+            </t-side-bar-item>
+        </t-side-bar>
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed, reactive } from 'vue'
+import { type MenuCagetory } from '@/models/menu'
 
-const active = ref(0)
-const theme = reactive({
-    sidebarWidth: '100px',
-    sidebarBackground: '#e0e0e0',
-    sidebarLineHeight: '16px',
-    sidebarPadding: '16px',
+const emit = defineEmits(['change'])
+const activeIndex = defineModel({
+    type: Number,
+    default: 0
 })
 
-const categoryList = ref([
-    { id: 1, name: '热销', picUrl: 'https://avatars.githubusercontent.com/u/24618629?v=4' },
-    { id: 2, name: '新品', picUrl: 'https://avatars.githubusercontent.com/u/24618629?v=4' },
-    { id: 3, name: '优惠', picUrl: 'https://avatars.githubusercontent.com/u/24618629?v=4' },
-    { id: 4, name: '主食', picUrl: 'https://avatars.githubusercontent.com/u/24618629?v=4' },
-    { id: 5, name: '饮品', picUrl: 'https://avatars.githubusercontent.com/u/24618629?v=4' },
-    { id: 6, name: '甜品', picUrl: 'https://avatars.githubusercontent.com/u/24618629?v=4' },
-    { id: 7, name: '水果', picUrl: 'https://avatars.githubusercontent.com/u/24618629?v=4' },
-    { id: 8, name: '零食', picUrl: 'https://avatars.githubusercontent.com/u/24618629?v=4' },
-    { id: 9, name: '其他', picUrl: 'https://avatars.githubusercontent.com/u/24618629?v=4' }
-])
+defineProps({
+    data: Object as PropType<MenuCagetory[]>
+})
 
-const onItemClick = (item) => {
-    console.log(item)
+const onSideBarChange = (index: number) => {
+    activeIndex.value = index
+    emit('change', index)
 }
 
+const onSidebarClick = () => {
+    console.log('onSidebarClick')
+}
 </script>
 
 <style scoped>
