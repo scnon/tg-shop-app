@@ -1,7 +1,7 @@
 <template>
     <div class="category">
         <t-side-bar :value="activeIndex" @change="onSideBarChange" @click="onSidebarClick">
-            <t-side-bar-item v-for="(item, index) in data" :key="index" :value="index" :label="item.label">
+            <t-side-bar-item v-for="(item, index) in category" :key="index" :value="index" :label="item.label">
             </t-side-bar-item>
         </t-side-bar>
     </div>
@@ -17,9 +17,11 @@ const activeIndex = defineModel({
     default: 0
 })
 
-defineProps({
+const props = defineProps({
     data: Object as PropType<MenuCagetory[]>
 })
+
+const category = toRef(props, 'data')
 
 const onSideBarChange = (index: number) => {
     activeIndex.value = index

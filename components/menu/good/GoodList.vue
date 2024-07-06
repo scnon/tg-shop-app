@@ -1,6 +1,6 @@
 <template>
     <div ref="wrapper" class="good-list" @scroll="onScroll">
-        <div v-for="(item, index) in data" :key="index" class="section" :style="contentStyle">
+        <div v-for="(item, index) in goodList" :key="index" class="section" :style="contentStyle">
             <div class="title">{{ item.title || item.label }}</div>
 
             <div v-for="(info, index) in item.items" :key="index">
@@ -19,11 +19,11 @@ const activeIndex = defineModel({
     default: 0
 })
 
-defineProps({
+const props = defineProps({
     data: Object as PropType<MenuCagetory[]>
 })
 
-
+const goodList = toRef(props, 'data')
 
 const contentStyle = ref('');
 const wrapper = ref<HTMLElement>();
@@ -36,7 +36,6 @@ const getOffsetTopList = () => {
             offsetTopList.push(item.offsetTop);
         });
     }
-    console.log(offsetTopList);
 }
 
 const moveToActiveSideBar = (index: number) => {
