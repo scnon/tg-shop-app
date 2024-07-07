@@ -38,5 +38,11 @@ export default defineNuxtConfig({
     }
   },
 
+  nitro: {
+    prerender: {
+      autoSubfolderIndex: false
+    }
+  },
+
   compatibilityDate: '2024-07-06'
 })
