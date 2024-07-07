@@ -1,4 +1,7 @@
 import { resolve } from "path";
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { TDesignResolver } from 'unplugin-vue-components/resolvers';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -6,15 +9,34 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss"],
 
   devServer: {
-    https: {
-      key: resolve(__dirname, "ssl/pay.xing.me-key.pem"),
-      cert: resolve(__dirname, "ssl/pay.xing.me.pem"),
-    },
+    https: false,
+    // https: {
+    //   key: resolve(__dirname, "ssl/pay.xing.me-key.pem"),
+    //   cert: resolve(__dirname, "ssl/pay.xing.me.pem"),
+    // },
   },
 
   typescript: {
     typeCheck: true
   },
 
-  compatibilityDate: "2024-07-05"
+  vite: {
+    plugins: [
+      AutoImport({
+        resolvers: [TDesignResolver({
+          library: 'mobile-vue'
+        })],
+      }),
+
+      Components({
+        resolvers: [TDesignResolver({
+          library: 'mobile-vue'
+        })],
+      }),
+    ],
+    ssr: {
+    }
+  },
+
+  compatibilityDate: '2024-07-06'
 })

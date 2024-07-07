@@ -8,7 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, reactive } from 'vue'
 import { type MenuCagetory } from '@/models/menu'
 
 const emit = defineEmits(['change'])
@@ -35,31 +34,12 @@ const onSidebarClick = () => {
 
 <style scoped>
 .category {
-    justify-content: center;
-    align-items: center;
-    background-color: #cccccc;
     height: 100vh;
-    width: 100px;
-}
 
-.cate-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 46px;
-    background-color: #cccccc;
-    user-select: none;
-}
+    --td-bg-color-container: var(--tg-theme-secondary-bg-color);
 
-.cate-item-selected {
-    background-color: #f0f0f0;
-}
-
-.item-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    --td-side-bar-bg-color: var(--tg-theme-header-bg-color);
+    --td-side-bar-active-color: var(--tg-theme-link-color);
+    --td-side-bar-color: var(--tg-theme-text-color);
 }
 </style>

@@ -1,0 +1,20 @@
+@baseUrl = https://pay.xing.me:3000/api
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjAzNzI2MTIsImRhdGEiOjEsImlhdCI6MTcyMDI4NjIxMn0.VeW2Fl7X2KMhTr5DwHx5uOda4_LZ8flL5kNlWdSc_Ms
+
+POST {{baseUrl}}/user/login
+Content-Type: application/json
+
+{
+    "id": "1233"
+}
+###
+
+POST {{baseUrl}}/menu
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+POST {{baseUrl}}/menu
+Content-Type: application/json

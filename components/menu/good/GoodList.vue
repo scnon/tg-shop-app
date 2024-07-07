@@ -11,7 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
 import type { MenuCagetory } from '@/models/menu'
 
 const activeIndex = defineModel({
@@ -71,6 +70,8 @@ defineExpose({
 .good-list {
     flex: 1;
     overflow-y: scroll;
+    color: var(--tg-theme-link-color);
+    background-color: var(--tg-theme-header-bg-color);
 }
 
 .section {

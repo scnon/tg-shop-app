@@ -1,3 +1,4 @@
+import { useNuxtApp } from "nuxt/app";
 import type { MenuData } from "~/models/menu";
 
 const image = 'https://tdesign.gtimg.com/mobile/demos/example2.png';
@@ -15,13 +16,13 @@ const mockMenu: MenuData = {
             items: items
         },
         {
-            label: '新品',
-            title: '新品',
+            label: '特色炒菜',
+            title: '特色炒菜',
             items: items
         },
         {
-            label: '新品',
-            title: '新品',
+            label: '商务套餐',
+            title: '商务套餐',
             items: items
         }
     ]

@@ -6,8 +6,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
 const time = 1000
 const menu = ref(null)
 const checkout = ref(false)
