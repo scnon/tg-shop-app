@@ -8,7 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     TConfigProvider: typeof import('tdesign-mobile-vue')['ConfigProvider']
-    TIcon: typeof import('tdesign-mobile-vue')['Icon']
     TImage: typeof import('tdesign-mobile-vue')['Image']
     TSideBar: typeof import('tdesign-mobile-vue')['SideBar']
     TSideBarItem: typeof import('tdesign-mobile-vue')['SideBarItem']
