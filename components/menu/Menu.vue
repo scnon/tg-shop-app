@@ -1,20 +1,9 @@
 <template>
     <div class="menu">
-        <div class="info">
-            <div>
-                <div class="title">
-                    <text class="shop-name"><b>魏蜀吴火锅店</b></text>
-                    <t-tag theme="danger" size="small">新店</t-tag>
-                </div>
-                <div>
-                    <div class="time"><text class="title">营业时间: </text><b>9:30 - 22:00</b></div>
-                </div>
-            </div>
-            <div class="table">桌号 <b>103</b></div>
-        </div>
+        <menu-shop-info />
         <div class="list">
-            <MenuCategory :data="data?.categories" v-model="activeIndex" @change="onTabChange" />
-            <MenuGoodList ref="goodList" :data="data?.categories" v-model="activeIndex" />
+            <menu-category :data="data?.categories" v-model="activeIndex" @change="onTabChange" />
+            <menu-good-list ref="goodList" :data="data?.categories" v-model="activeIndex" />
         </div>
     </div>
 </template>
@@ -26,7 +15,7 @@ import type { MenuData } from '~/models/menu';
 const activeIndex = ref(0)
 const goodList = ref<InstanceType<typeof GoodList>>()
 
-const { data } = await useFetch<MenuData>('/api/menu', { method: 'post', body: { hello: 'world' }, server: true })
+const { data } = await useFetch<MenuData>('/api/shop/menu', { method: 'post', body: { hello: 'world' }, server: true })
 // const data = ref<MenuCagetory[]>([])
 
 const onTabChange = (index: number) => {
@@ -49,52 +38,7 @@ const onTabChange = (index: number) => {
     background-color: var(--tg-theme-bg-color);
 }
 
-.info {
-    display: flex;
-    padding: 0 16px 12px 16px;
-    color: var(--tg-theme-text-color);
-
-    .title {
-        /* display: flex; */
-        font-size: 16px;
-        color: var(--tg-theme-text-color);
-
-        .welcome {
-            font-size: 14px;
-            color: var(--tg-theme-hint-color);
-        }
-
-        .shop-name {
-            font-size: 18px;
-            padding-right: 6px;
-            color: var(--tg-theme-link-color);
-        }
-    }
-
-    .time {
-        font-size: 14px;
-        color: var(--tg-theme-text-color);
-
-        .title {
-            font-size: 14px;
-            color: var(--tg-theme-hint-color);
-        }
-    }
-
-    .table {
-        margin-left: auto;
-        align-self: center;
-        padding: 6px 8px;
-        border-radius: 6px;
-        color: var(--tg-theme-button-text-color);
-        background-color: var(--tg-theme-button-color);
-    }
-}
-
-
-
 .list {
     display: flex;
-    flex: 1;
 }
 </style>

@@ -46,6 +46,7 @@ const moveToActiveSideBar = (index: number) => {
 onMounted(() => {
     getOffsetTopList();
     moveToActiveSideBar(activeIndex.value);
+    console.log('goodList', offsetTopList);
 })
 
 const onScroll = (event: WheelEvent | Event) => {
@@ -59,6 +60,7 @@ const onScroll = (event: WheelEvent | Event) => {
     if (index > -1) {
         activeIndex.value = index;
     }
+    console.log(offsetTopList, threshold, scrollTop, index, activeIndex.value);
 }
 
 defineExpose({
@@ -69,18 +71,21 @@ defineExpose({
 <style scoped>
 .good-list {
     flex: 1;
-    overflow-y: scroll;
+    height: 100vh;
+    overflow-y: auto;
     color: var(--tg-theme-link-color);
-    background-color: var(--tg-theme-header-bg-color);
+    background-color: var(--tg-theme-secondary-bg-color);
 }
 
 .section {
-    padding: 16px 0;
+    padding: 6px 0 0 0;
 }
 
 .title {
     padding-left: 20px;
     margin-bottom: 4px;
-    line-height: 26px;
+    line-height: 46px;
+    border-radius: 6px;
+    background-color: var(--tg-theme-header-bg-color);
 }
 </style>

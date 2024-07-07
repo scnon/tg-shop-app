@@ -9,11 +9,13 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss"],
 
   devServer: {
-    https: false,
-    // https: {
-    //   key: resolve(__dirname, "ssl/pay.xing.me-key.pem"),
-    //   cert: resolve(__dirname, "ssl/pay.xing.me.pem"),
-    // },
+    port: 3000,
+    host: 'pay.xing.me',
+    // https: false,
+    https: {
+      key: resolve(__dirname, "ssl/pay.xing.me-key.pem"),
+      cert: resolve(__dirname, "ssl/pay.xing.me.pem"),
+    },
   },
 
   typescript: {

@@ -7,6 +7,9 @@ interface MenuData {
 interface MenuCagetory {
     label: string;
     title: string;
+    badge?: {
+        count: number;
+    }
     items: GoodInfo[];
 }
 

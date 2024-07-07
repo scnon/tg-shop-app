@@ -1,3 +1,4 @@
+import type { H3Event } from 'h3';
 import { SnowflakeIdv1 } from "simple-flakeid"
 import jwt from "jsonwebtoken"
 
@@ -33,4 +34,12 @@ export const verifyJwt = (token: string) => {
     console.log("jwt error")
     return null
   }
+}
+
+export const checkAuth = (event: H3Event) => {
+  if (event.context.auth == null) {
+    return responseError(1, '未登录')
+  }
+
+  return null
 }

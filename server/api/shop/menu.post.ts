@@ -1,19 +1,20 @@
-import { useNuxtApp } from "nuxt/app";
 import type { MenuData } from "~/models/menu";
 
-const image = 'https://tdesign.gtimg.com/mobile/demos/example2.png';
-const items = new Array(12).fill({ label: '标题文字', image }, 0, 12);
+const items = new Array(12).fill({ label: '标题文字', image: '' }, 0, 12);
 const mockMenu: MenuData = {
     categories: [
         {
             label: '热销',
             title: '热销',
-            items: items
+            items: items,
         },
         {
             label: '新品',
             title: '新品',
-            items: items
+            items: items,
+            badge: {
+                count: 3,
+            }
         },
         {
             label: '特色炒菜',
@@ -27,6 +28,8 @@ const mockMenu: MenuData = {
         }
     ]
 }
+
+// 店铺菜单接口
 export default defineEventHandler(async (event) => {
     assertMethod(event, "POST");
 

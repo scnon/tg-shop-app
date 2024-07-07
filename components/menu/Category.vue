@@ -1,7 +1,8 @@
 <template>
     <div class="category">
         <t-side-bar :value="activeIndex" @change="onSideBarChange" @click="onSidebarClick">
-            <t-side-bar-item v-for="(item, index) in category" :key="index" :value="index" :label="item.label">
+            <t-side-bar-item v-for="(item, index) in category" :key="index" :value="index" :label="item.label"
+                :badge-props="item.badge">
             </t-side-bar-item>
         </t-side-bar>
     </div>
@@ -35,6 +36,7 @@ const onSidebarClick = () => {
 <style scoped>
 .category {
     height: 100vh;
+    overflow: auto;
 
     --td-bg-color-container: var(--tg-theme-secondary-bg-color);
 

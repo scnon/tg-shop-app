@@ -1,4 +1,4 @@
-@baseUrl = https://pay.xing.me:3000/api
+@baseUrl = https://pay.xing.me:5173/api
 
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjAzNzI2MTIsImRhdGEiOjEsImlhdCI6MTcyMDI4NjIxMn0.VeW2Fl7X2KMhTr5DwHx5uOda4_LZ8flL5kNlWdSc_Ms
 
@@ -10,11 +10,11 @@ Content-Type: application/json
 }
 ###
 
-POST {{baseUrl}}/menu
+POST {{baseUrl}}/shop/menu
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ###
 
-POST {{baseUrl}}/menu
+POST {{baseUrl}}/order/create
 Content-Type: application/json
