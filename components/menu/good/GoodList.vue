@@ -56,11 +56,11 @@ const onScroll = (event: WheelEvent | Event) => {
         activeIndex.value = 0;
         return;
     }
+
     const index = offsetTopList.findIndex((top) => top > scrollTop && top - scrollTop <= threshold);
     if (index > -1) {
         activeIndex.value = index;
     }
-    console.log(offsetTopList, threshold, scrollTop, index, activeIndex.value);
 }
 
 defineExpose({

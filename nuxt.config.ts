@@ -1,4 +1,4 @@
-import { resolve } from "path";
+import mkcert from 'vite-plugin-mkcert'
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { TDesignResolver } from 'unplugin-vue-components/resolvers';
@@ -11,11 +11,7 @@ export default defineNuxtConfig({
   devServer: {
     port: 3000,
     host: 'pay.xing.me',
-    // https: false,
-    https: {
-      key: resolve(__dirname, "ssl/pay.xing.me-key.pem"),
-      cert: resolve(__dirname, "ssl/pay.xing.me.pem"),
-    },
+    https: true
   },
 
   typescript: {
@@ -24,6 +20,7 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [
+      mkcert(),
       AutoImport({
         resolvers: [TDesignResolver({
           library: 'mobile-vue'

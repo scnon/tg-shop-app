@@ -1,5 +1,6 @@
-import type { RowDataPacket } from "mysql2";
+// import type { RowDataPacket } from "mysql2";
 
+interface RowDataPacket { };
 
 export interface User extends RowDataPacket {
   id: number; // 用户 ID
